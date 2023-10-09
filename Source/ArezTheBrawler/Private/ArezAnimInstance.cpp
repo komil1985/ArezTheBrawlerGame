@@ -25,5 +25,6 @@ void UArezAnimInstance::NativeUpdateAnimation(float DeltaTime)
 	if (MyPlayerCharacterMovement)
 	{
 		GroundSpeed = UKismetMathLibrary::VSizeXY(MyPlayerCharacterMovement->Velocity);
+		CharacterState = MyPlayerCharacter->GetCharacterState();
 	}
 }

@@ -57,6 +57,11 @@ void AMyPlayer::Move(const FInputActionValue& Value)
 
 }
 
+void AMyPlayer::Attack()
+{
+
+}
+
 void AMyPlayer::Look(const FInputActionValue& Value)
 {
 	const FVector2D LookAxisValue = Value.Get<FVector2D>();
@@ -83,6 +88,7 @@ void AMyPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyPlayer::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyPlayer::Look);
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, his, &AMyPlayer::Attack);
 	}
 
 }
