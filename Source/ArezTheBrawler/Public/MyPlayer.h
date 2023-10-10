@@ -15,6 +15,7 @@ class USpringArmComponent;
 class UInputMappingContext;
 class UInputAction;
 class UInputComponent;
+class UAnimMontage;
 
 
 UCLASS()
@@ -56,6 +57,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArm;
+
+	UPROPERTY(EditDefaultsOnly, Category = Montages)
+	UAnimMontage* AttackMontage;
 
 public:
 	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
