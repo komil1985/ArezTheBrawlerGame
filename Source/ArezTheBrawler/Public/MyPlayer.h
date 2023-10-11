@@ -33,6 +33,8 @@ protected:
 	void Look(const FInputActionValue& Value);
 	void Attack();
 
+	void PlayAttackMontage();
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* PlayerMappingContext;
 
@@ -51,6 +53,7 @@ protected:
 private:
 
 	ECharacterState CharacterState = ECharacterState::ECS_IdleState;
+	EActionState ActionState = EActionState::EAS_Unoccupied;
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* Camera;

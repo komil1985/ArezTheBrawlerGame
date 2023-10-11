@@ -39,7 +39,6 @@ void AMyPlayer::BeginPlay()
 			SubSystem->AddMappingContext(PlayerMappingContext, 0);
 		}
 	}
-	
 }
 
 void AMyPlayer::Move(const FInputActionValue& Value)
@@ -55,10 +54,18 @@ void AMyPlayer::Move(const FInputActionValue& Value)
 	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 	AddMovementInput(RightDirection, MoveVector.X);
 
-
 }
 
 void AMyPlayer::Attack()
+{
+	if (ActionState == EActionState::EAS_Unoccupied)
+	{
+		PlayAttackMontage();
+		ActionState = EActionState::EAS_Attacking;
+	}
+}
+
+void AMyPlayer::PlayAttackMontage()
 {
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	if (AnimInstance && AttackMontage)
@@ -111,4 +118,3 @@ void AMyPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	}
 
 }
-
