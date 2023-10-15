@@ -34,6 +34,9 @@ protected:
 	void Attack();
 
 	void PlayAttackMontage();
+	bool CanAttack();
+	UFUNCTION(BlueprintCallable)
+	void AttackEnd();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* PlayerMappingContext;

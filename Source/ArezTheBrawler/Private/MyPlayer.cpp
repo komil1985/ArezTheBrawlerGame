@@ -58,7 +58,7 @@ void AMyPlayer::Move(const FInputActionValue& Value)
 
 void AMyPlayer::Attack()
 {
-	if (ActionState == EActionState::EAS_Unoccupied)
+	if (CanAttack())
 	{
 		PlayAttackMontage();
 		ActionState = EActionState::EAS_Attacking;
@@ -86,6 +86,17 @@ void AMyPlayer::PlayAttackMontage()
 		}
 		AnimInstance->Montage_JumpToSection(SectionName, AttackMontage);
 	}
+}
+
+bool AMyPlayer::CanAttack()
+{
+	return ActionState == EActionState::EAS_Unoccupied 
+		&& CharacterState != ECharacterState::ECS_IdleState;
+}
+
+void AMyPlayer::AttackEnd()
+{
+	ActionState = EActionState::EAS_Unoccupied;
 }
 
 void AMyPlayer::Look(const FInputActionValue& Value)
